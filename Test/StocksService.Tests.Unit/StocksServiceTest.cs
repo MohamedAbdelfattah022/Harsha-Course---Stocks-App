@@ -3,9 +3,6 @@ using RepositoryContracts;
 using ServiceContracts;
 using ServiceContracts.DTO;
 using Services;
-using AutoFixture;
-using FluentAssertions;
-using NSubstitute;
 
 namespace Tests {
 	public class StocksServiceTest {

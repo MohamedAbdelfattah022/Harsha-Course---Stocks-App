@@ -16,6 +16,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repositories", "Repositories\Repositories.csproj", "{C3E34F70-4353-4683-A4A7-2E362B996482}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{CC4FB2DA-794F-4E35-B7A1-DBF1C44B784C}"
+	ProjectSection(SolutionItems) = preProject
+		Test\Directory.Build.props = Test\Directory.Build.props
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StocksService.Tests.Unit", "Test\StocksService.Tests.Unit\StocksService.Tests.Unit.csproj", "{C1FD3F06-37CA-45DF-84FF-8EEB55BF048A}"
 EndProject
