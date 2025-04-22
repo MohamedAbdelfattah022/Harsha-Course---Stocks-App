@@ -22,7 +22,8 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\StockMarketSolution\StockMarketSolution.csproj" />
+      <ProjectReference Include="..\..\StockMarketSolution\StockMarketSolution.csproj" />
     </ItemGroup>
+
 
 </Project>
