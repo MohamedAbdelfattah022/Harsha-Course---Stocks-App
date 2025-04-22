@@ -21,7 +21,7 @@ builder.Services.AddDbContext<OrdersDbContext>(options => options.UseSqlServer(c
 
 var app = builder.Build();
 
-Rotativa.AspNetCore.RotativaConfiguration.Setup("wwwroot", wkhtmltopdfRelativePath: "Rotativa");
+// Rotativa.AspNetCore.RotativaConfiguration.Setup("wwwroot", wkhtmltopdfRelativePath: "Rotativa");
 
 app.UseStaticFiles();
 app.UseRouting();
