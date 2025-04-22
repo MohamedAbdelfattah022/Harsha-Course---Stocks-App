@@ -1,7 +1,6 @@
 ﻿using AngleSharp.Html.Parser;
 using Microsoft.AspNetCore.Mvc.Testing;
 using StockMarketSolution;
-using FluentAssertions;
 
 namespace StockMarket.Tests.Integration;
 
