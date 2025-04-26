@@ -6,18 +6,28 @@ using StockMarketSolution.Models;
 namespace StockMarketSolution.Controllers;
 
 [Route("[controller]")]
-public class StocksController(IFinnhubService finnhubService, IOptions<TradingOptions> tradingOptions) : Controller {
+public class StocksController(IFinnhubService finnhubService, IOptions<TradingOptions> tradingOptions, ILogger<StocksController> logger)
+	: Controller {
 	private readonly TradingOptions _tradingOptions = tradingOptions.Value;
 
 	[Route("/")]
 	[Route("[action]/{stock?}")]
 	[HttpGet]
 	public async Task<IActionResult> Explore(string stock) {
-		if (_tradingOptions.Top25PopularStocks is null) return NotFound();
+		logger.LogInformation("Explore action called with stock: {Stock}", stock);
+
+		if (_tradingOptions.Top25PopularStocks is null) {
+			logger.LogError("Top25PopularStocks configuration is null");
+			return NotFound();
+		}
+
 		var top25 = _tradingOptions.Top25PopularStocks.Split(',');
 
 		var stocksDict = await finnhubService.GetStocks();
-		if (stocksDict is null) return NotFound();
+		if (stocksDict is null) {
+			logger.LogError("Failed to retrieve stocks from Finnhub service");
+			return NotFound();
+		}
 
 		var stocks = stocksDict
 			.Where(temp => top25.Contains(Convert.ToString(temp["symbol"])))
@@ -37,7 +47,7 @@ public class StocksController(IFinnhubService finnhubService, IOptions<TradingOp
 		// 		new Stock()
 		// 				{ StockName = "Google", StockSymbol = "GOOGL" },
 		// 	};
-		
+
 		ViewBag.stock = stock;
 		return View(stocks);
 	}
